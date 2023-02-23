@@ -14,7 +14,6 @@ search.addEventListener('click', ()=>{
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
   .then(res => res.json())
   .then(json => {
-    console.log(json)
     
     if(json.cod === '404'){
         container.style.height = '400px'
@@ -58,7 +57,7 @@ search.addEventListener('click', ()=>{
           image.src = ''
     }
 
-    temperature.innerHTML = `${parseInt(json.main.temp/100)}℃`
+    temperature.innerHTML = `${parseInt(json.main.temp-273)}℃`
     description.innerHTML = `${json.weather[0].description}`
     humidity.innerHTML = `${json.main.humidity}%`
     wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`
